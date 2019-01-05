@@ -19,7 +19,7 @@ app.config['JSON_SORT_KEYS'] = False
 mysql.init_app(app)
 
 
-@app.route('/',methods=['GET'])
+@app.route('/', methods=['GET'])
 def getVersion():
     return utility.give_response("00", os.getenv('APP_NAME'))
 
