@@ -29,3 +29,17 @@ class InsertIdentity(Resource):
             return utility.give_response("00", "INSERT IDENTITY SUKSES")
         except Exception as e:
             return utility.give_response("01", e)
+
+
+class UpdateIdentity(Resource):
+    @staticmethod
+    def put(id):
+        try:
+            cursor = connection.cursor()
+            name = request.form["name"]
+            address = request.form["address"]
+            cursor.execute("""UPDATE identity SET name=%s , address=%s WHERE id=%s""", (name, address, id))
+            connection.commit()
+            return utility.give_response("00", "UPDATE IDENTITY SUKSES")
+        except Exception as e:
+            return utility.give_response("01", e)

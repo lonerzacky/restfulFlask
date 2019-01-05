@@ -1,7 +1,7 @@
 from flask import Flask
 from dotenv import load_dotenv
 from flask_restful import Api, Resource
-from controllers.IdentityController import GetIdentity, InsertIdentity
+from controllers.IdentityController import GetIdentity, InsertIdentity, UpdateIdentity
 import utility
 import os
 
@@ -21,6 +21,7 @@ class GetVersion(Resource):
 api.add_resource(GetVersion, '/')
 api.add_resource(GetIdentity, '/getIdentity')
 api.add_resource(InsertIdentity, '/insertIdentity')
+api.add_resource(UpdateIdentity, '/updateIdentity/<int:id>')
 
 if __name__ == '__main__':
     app.run()
