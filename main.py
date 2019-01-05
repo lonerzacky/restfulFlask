@@ -19,13 +19,13 @@ app.config['JSON_SORT_KEYS'] = False
 mysql.init_app(app)
 
 
-@app.route('/')
+@app.route('/',methods=['GET'])
 def getVersion():
     return utility.give_response("00", os.getenv('APP_NAME'))
 
 
-@app.route('/getIdentity')
-def getIdentity():
+@app.route('/getIdentity', methods=['GET'])
+def get():
     cur = mysql.connect().cursor()
     cur.execute('''select * from identity ''')
     result = [dict((cur.description[i][0], value)
