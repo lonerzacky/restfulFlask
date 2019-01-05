@@ -12,12 +12,14 @@ app.config['JSON_SORT_KEYS'] = False
 
 
 class GetVersion(Resource):
-    def get(self):
+    @staticmethod
+    def get():
         return utility.give_response("00", os.getenv('APP_NAME'))
 
 
 class GetIdentity(Resource):
-    def get(self):
+    @staticmethod
+    def get():
         try:
             cur = mysql.connect().cursor()
             cur.execute('''select * from identity ''')
@@ -29,7 +31,8 @@ class GetIdentity(Resource):
 
 
 class InsertIdentity(Resource):
-    def post(self):
+    @staticmethod
+    def post():
         try:
             name = request.form["name"]
             address = request.form["address"]
@@ -45,7 +48,6 @@ class InsertIdentity(Resource):
 api.add_resource(GetVersion, '/')
 api.add_resource(GetIdentity, '/getIdentity')
 api.add_resource(InsertIdentity, '/insertIdentity')
-
 
 if __name__ == '__main__':
     app.run()
