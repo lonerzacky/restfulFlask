@@ -17,6 +17,10 @@ class GetVersion(Resource):
     def get():
         return utility.give_response("00", os.getenv('APP_NAME'))
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return utility.give_response("01","THIS METHOD DOES NOT EXIST")
+
 
 api.add_resource(GetVersion, '/')
 api.add_resource(GetIdentity, '/getIdentity')
