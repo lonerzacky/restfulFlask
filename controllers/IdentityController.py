@@ -43,3 +43,15 @@ class UpdateIdentity(Resource):
             return utility.give_response("00", "UPDATE IDENTITY SUKSES")
         except Exception as e:
             return utility.give_response("01", e)
+
+
+class DeleteIdentity(Resource):
+    @staticmethod
+    def delete(id):
+        try:
+            cursor = connection.cursor()
+            cursor.execute("""DELETE FROM identity WHERE id=%s""", (id))
+            connection.commit()
+            return utility.give_response("00", "DELETE IDENTITY SUKSES")
+        except Exception as e:
+            return utility.give_response("01", e)
