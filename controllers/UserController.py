@@ -41,3 +41,35 @@ class InsertUser(Resource):
             return utility.give_response("00", "INSERT USER SUKSES")
         except Exception as e:
             return utility.give_response("01", str(e))
+
+
+# noinspection SqlResolve
+class UpdateUser(Resource):
+    @staticmethod
+    def put(sysuser_id):
+        try:
+            cursor = connection.cursor()
+            sysrole_kode = request.form["sysrole_kode"]
+            sysuser_nama = request.form["sysuser_nama"]
+            sysuser_namalengkap = request.form["sysuser_namalengkap"]
+            sysuser_email = request.form["sysuser_email"]
+            cursor.execute("""UPDATE sys_user SET sysrole_kode = %s, sysuser_nama = %s, 
+            sysuser_namalengkap = %s, sysuser_email = %s WHERE sysuser_id = %s""",
+                           (sysrole_kode, sysuser_nama, sysuser_namalengkap, sysuser_email, sysuser_id))
+            connection.commit()
+            return utility.give_response("00", "UPDATE USER SUKSES")
+        except Exception as e:
+            return utility.give_response("01", str(e))
+
+
+# noinspection SqlResolve
+class DeleteUser(Resource):
+    @staticmethod
+    def delete(sysuser_id):
+        try:
+            cursor = connection.cursor()
+            cursor.execute("""DELETE FROM sys_user WHERE sysuser_id = %s""", sysuser_id)
+            connection.commit()
+            return utility.give_response("00", "HAPUS USER SUKSES")
+        except Exception as e:
+            return utility.give_response("01", str(e))
