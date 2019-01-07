@@ -1,7 +1,7 @@
 from flask import Flask
 from dotenv import load_dotenv
 from flask_restful import Api, Resource
-from controllers.AuthController import ChangePassword
+from controllers.AuthController import ChangePassword, VerifyLogin
 from controllers.IdentityController import GetIdentity, InsertIdentity, UpdateIdentity, DeleteIdentity
 from controllers.UserController import GetUser, InsertUser, UpdateUser, DeleteUser
 import utility
@@ -35,6 +35,7 @@ api.add_resource(InsertUser, '/insertUser')
 api.add_resource(UpdateUser, '/updateUser/<int:sysuser_id>')
 api.add_resource(DeleteUser, '/deleteUser/<int:sysuser_id>')
 api.add_resource(ChangePassword, '/changePassword')
+api.add_resource(VerifyLogin, '/verifyLogin')
 
 if __name__ == '__main__':
     app.run()
