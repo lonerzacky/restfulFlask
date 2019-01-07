@@ -33,12 +33,12 @@ class InsertIdentity(Resource):
 
 class UpdateIdentity(Resource):
     @staticmethod
-    def put(id):
+    def put(id_identity):
         try:
             cursor = connection.cursor()
             name = request.form["name"]
             address = request.form["address"]
-            cursor.execute("""UPDATE identity SET name=%s , address=%s WHERE id=%s""", (name, address, id))
+            cursor.execute("""UPDATE identity SET name=%s , address=%s WHERE id=%s""", (name, address, id_identity))
             connection.commit()
             return utility.give_response("00", "UPDATE IDENTITY SUKSES")
         except Exception as e:
@@ -47,10 +47,10 @@ class UpdateIdentity(Resource):
 
 class DeleteIdentity(Resource):
     @staticmethod
-    def delete(id):
+    def delete(id_identity):
         try:
             cursor = connection.cursor()
-            cursor.execute("""DELETE FROM identity WHERE id=%s""", (id))
+            cursor.execute("""DELETE FROM identity WHERE id=%s""", (id_identity))
             connection.commit()
             return utility.give_response("00", "DELETE IDENTITY SUKSES")
         except Exception as e:
