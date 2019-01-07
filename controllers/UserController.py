@@ -8,6 +8,7 @@ import utility
 class GetUser(Resource):
     @staticmethod
     def get():
+        global cursor
         try:
             cursor = connection.cursor()
             cursor.execute("""SELECT sys_user.sysuser_id, sys_role.sysrole_kode, sys_role.sysrole_nama, 
@@ -27,6 +28,7 @@ class GetUser(Resource):
 class InsertUser(Resource):
     @staticmethod
     def post():
+        global cursor
         try:
             sysuser_id = request.form["sysuser_id"]
             sysrole_kode = request.form["sysrole_kode"]
@@ -51,6 +53,7 @@ class InsertUser(Resource):
 class UpdateUser(Resource):
     @staticmethod
     def put(sysuser_id):
+        global cursor
         try:
             cursor = connection.cursor()
             sysrole_kode = request.form["sysrole_kode"]
@@ -72,6 +75,7 @@ class UpdateUser(Resource):
 class DeleteUser(Resource):
     @staticmethod
     def delete(sysuser_id):
+        global cursor
         try:
             cursor = connection.cursor()
             cursor.execute("""DELETE FROM sys_user WHERE sysuser_id = %s""", sysuser_id)
