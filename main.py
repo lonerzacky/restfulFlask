@@ -2,6 +2,7 @@ from flask import Flask
 from dotenv import load_dotenv
 from flask_restful import Api, Resource
 from controllers.IdentityController import GetIdentity, InsertIdentity, UpdateIdentity, DeleteIdentity
+from controllers.UserController import GetUser, InsertUser
 import utility
 import os
 
@@ -28,6 +29,8 @@ api.add_resource(GetIdentity, '/getIdentity')
 api.add_resource(InsertIdentity, '/insertIdentity')
 api.add_resource(UpdateIdentity, '/updateIdentity/<int:id_identity>')
 api.add_resource(DeleteIdentity, '/deleteIdentity/<int:id_identity>')
+api.add_resource(GetUser, '/getUser')
+api.add_resource(InsertUser, '/insertUser')
 
 if __name__ == '__main__':
     app.run()
