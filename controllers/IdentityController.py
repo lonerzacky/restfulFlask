@@ -15,6 +15,8 @@ class GetIdentity(Resource):
             return utility.give_response("00", "GET IDENTITY SUKSES", result)
         except Exception as e:
             return utility.give_response("01", e)
+        finally:
+            cursor.close()
 
 
 class InsertIdentity(Resource):
@@ -29,6 +31,8 @@ class InsertIdentity(Resource):
             return utility.give_response("00", "INSERT IDENTITY SUKSES")
         except Exception as e:
             return utility.give_response("01", e)
+        finally:
+            cursor.close()
 
 
 class UpdateIdentity(Resource):
@@ -43,6 +47,8 @@ class UpdateIdentity(Resource):
             return utility.give_response("00", "UPDATE IDENTITY SUKSES")
         except Exception as e:
             return utility.give_response("01", e)
+        finally:
+            cursor.close()
 
 
 class DeleteIdentity(Resource):
@@ -55,3 +61,5 @@ class DeleteIdentity(Resource):
             return utility.give_response("00", "DELETE IDENTITY SUKSES")
         except Exception as e:
             return utility.give_response("01", e)
+        finally:
+            cursor.close()

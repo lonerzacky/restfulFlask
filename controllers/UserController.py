@@ -19,6 +19,8 @@ class GetUser(Resource):
             return utility.give_response("00", "GET USER SUKSES", result)
         except Exception as e:
             return utility.give_response("01", str(e))
+        finally:
+            cursor.close()
 
 
 # noinspection SqlResolve
@@ -41,6 +43,8 @@ class InsertUser(Resource):
             return utility.give_response("00", "INSERT USER SUKSES")
         except Exception as e:
             return utility.give_response("01", str(e))
+        finally:
+            cursor.close()
 
 
 # noinspection SqlResolve
@@ -60,6 +64,8 @@ class UpdateUser(Resource):
             return utility.give_response("00", "UPDATE USER SUKSES")
         except Exception as e:
             return utility.give_response("01", str(e))
+        finally:
+            cursor.close()
 
 
 # noinspection SqlResolve
@@ -73,3 +79,5 @@ class DeleteUser(Resource):
             return utility.give_response("00", "HAPUS USER SUKSES")
         except Exception as e:
             return utility.give_response("01", str(e))
+        finally:
+            cursor.close()
