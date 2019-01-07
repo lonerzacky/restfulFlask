@@ -50,7 +50,7 @@ class DeleteIdentity(Resource):
     def delete(id_identity):
         try:
             cursor = connection.cursor()
-            cursor.execute("""DELETE FROM identity WHERE id=%s""", (id_identity))
+            cursor.execute("""DELETE FROM identity WHERE id=%s""", id_identity)
             connection.commit()
             return utility.give_response("00", "DELETE IDENTITY SUKSES")
         except Exception as e:
