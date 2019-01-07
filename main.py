@@ -17,16 +17,17 @@ class GetVersion(Resource):
     def get():
         return utility.give_response("00", os.getenv('APP_NAME'))
 
+
 @app.errorhandler(404)
 def page_not_found(e):
-    return utility.give_response("01","THIS METHOD DOES NOT EXIST")
+    return utility.give_response("01", str(e))
 
 
 api.add_resource(GetVersion, '/')
 api.add_resource(GetIdentity, '/getIdentity')
 api.add_resource(InsertIdentity, '/insertIdentity')
-api.add_resource(UpdateIdentity, '/updateIdentity/<int:id>')
-api.add_resource(DeleteIdentity, '/deleteIdentity/<int:id>')
+api.add_resource(UpdateIdentity, '/updateIdentity/<int:id_identity>')
+api.add_resource(DeleteIdentity, '/deleteIdentity/<int:id_identity>')
 
 if __name__ == '__main__':
     app.run()
