@@ -7,6 +7,7 @@ import utility
 class GetIdentity(Resource):
     @staticmethod
     def get():
+        global cursor
         try:
             cursor = connection.cursor()
             cursor.execute('''select * from identity ''')
@@ -22,6 +23,7 @@ class GetIdentity(Resource):
 class InsertIdentity(Resource):
     @staticmethod
     def post():
+        global cursor
         try:
             cursor = connection.cursor()
             name = request.form["name"]
@@ -38,6 +40,7 @@ class InsertIdentity(Resource):
 class UpdateIdentity(Resource):
     @staticmethod
     def put(id_identity):
+        global cursor
         try:
             cursor = connection.cursor()
             name = request.form["name"]
@@ -54,6 +57,7 @@ class UpdateIdentity(Resource):
 class DeleteIdentity(Resource):
     @staticmethod
     def delete(id_identity):
+        global cursor
         try:
             cursor = connection.cursor()
             cursor.execute("""DELETE FROM identity WHERE id=%s""", id_identity)
