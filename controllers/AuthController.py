@@ -23,3 +23,5 @@ class ChangePassword(Resource):
                 return utility.give_response("01", "PASSWORD LAMA TIDAK SAMA", old_password_from_data)
         except Exception as e:
             return utility.give_response("01", str(e))
+        finally:
+            cursor.close()
