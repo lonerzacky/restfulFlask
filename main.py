@@ -2,7 +2,6 @@ from flask import Flask
 from dotenv import load_dotenv
 from flask_restful import Api, Resource
 from controllers.AuthController import ChangePassword, VerifyLogin
-from controllers.IdentityController import GetIdentity, InsertIdentity, UpdateIdentity, DeleteIdentity
 from controllers.UserController import GetUser, InsertUser, UpdateUser, DeleteUser
 import utility
 import os
@@ -26,10 +25,6 @@ def page_not_found(e):
 
 
 api.add_resource(GetVersion, '/')
-api.add_resource(GetIdentity, '/getIdentity')
-api.add_resource(InsertIdentity, '/insertIdentity')
-api.add_resource(UpdateIdentity, '/updateIdentity/<int:id_identity>')
-api.add_resource(DeleteIdentity, '/deleteIdentity/<int:id_identity>')
 api.add_resource(GetUser, '/getUser')
 api.add_resource(InsertUser, '/insertUser')
 api.add_resource(UpdateUser, '/updateUser/<int:sysuser_id>')
