@@ -47,3 +47,29 @@ class InsertModul(Resource):
             return utility.give_response("01", str(e))
         finally:
             cursor.close()
+
+
+# noinspection SqlResolve
+class UpdateModul(Resource):
+    @staticmethod
+    def put(sysmodul_kode):
+        global cursor
+        try:
+            sysmodul_nama = request.form["sysmodul_nama"]
+            sysmodul_url = request.form["sysmodul_url"]
+            sysmodul_icon = request.form["sysmodul_icon"]
+            sysmodul_parent = request.form["sysmodul_parent"]
+            if not sysmodul_parent:
+                sysmodul_parent = None
+            sysmodul_no_urut = request.form["sysmodul_no_urut"]
+            cursor = connection.cursor()
+            cursor.execute(
+                """UPDATE sys_modul SET sysmodul_nama=%s,sysmodul_url=%s,sysmodul_icon=%s,sysmodul_parent=%s,sysmodul_no_urut=%s WHERE sysmodul_kode=%s""",
+                (sysmodul_nama, sysmodul_url, sysmodul_icon, sysmodul_parent, sysmodul_no_urut, sysmodul_kode))
+            connection.commit()
+            return utility.give_response("00", "UPDATE MODUL SUKSES")
+        except Exception as e:
+            return utility.give_response("01", str(e))
+        finally:
+            cursor.close()
+
