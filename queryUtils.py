@@ -26,7 +26,7 @@ def get_info_user(sysuser_nama, sysuser_passw):
 
 
 # noinspection SqlResolve
-def create_log(response,status):
+def create_log(response, status):
     cursor = connection.cursor()
     now = datetime.datetime.now()
     request_time = now.strftime("%Y-%m-%d %H:%M")
@@ -36,5 +36,5 @@ def create_log(response,status):
         request_form = json.dumps(request.form)
     cursor.execute(
         """INSERT INTO logservice (uri,method,params,ip_address,request_time,response,status) VALUES (%s,%s,%s,%s,%s,%s,%s)""",
-        (request.base_url, request.method, request_form, request.remote_addr, request_time, response,status))
+        (request.base_url, request.method, request_form, request.remote_addr, request_time, response, status))
     connection.commit()
