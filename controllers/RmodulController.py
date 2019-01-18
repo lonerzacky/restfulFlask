@@ -40,3 +40,22 @@ class InsertRModul(Resource):
             return utility.give_response("01", str(e))
         finally:
             cursor.close()
+
+
+# noinspection SqlResolve
+class DeleteRModul(Resource):
+    @staticmethod
+    def post():
+        global cursor
+        try:
+            sysrole_kode = request.form["sysrole_kode"]
+            sysmodul_kode = request.form["sysmodul_kode"]
+            cursor = connection.cursor()
+            cursor.execute("""DELETE FROM sys_rmodul WHERE sysrole_kode=%s AND sysmodul_kode=%s""",
+                           (sysrole_kode, sysmodul_kode))
+            connection.commit()
+            return utility.give_response("00", "DELETE RMODUL SUKSES")
+        except Exception as e:
+            return utility.give_response("01", str(e))
+        finally:
+            cursor.close()
