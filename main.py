@@ -5,7 +5,7 @@ from controllers.AuthController import ChangePassword, VerifyLogin
 from controllers.ModulController import GetModul, InsertModul, UpdateModul, DeleteModul
 from controllers.RoleController import GetRole, InsertRole, UpdateRole, DeleteRole
 from controllers.UserController import GetUser, InsertUser, UpdateUser, DeleteUser
-from controllers.RmodulController import GetRmodul
+from controllers.RmodulController import GetRmodul, InsertRModul
 import utility
 import os
 
@@ -43,6 +43,7 @@ api.add_resource(InsertModul, '/insertModul')
 api.add_resource(UpdateModul, '/updateModul/<string:sysmodul_kode>')
 api.add_resource(DeleteModul, '/deleteModul/<string:sysmodul_kode>')
 api.add_resource(GetRmodul, '/getRmodul')
+api.add_resource(InsertRModul, '/insertRModul')
 
 if __name__ == '__main__':
     app.run()
