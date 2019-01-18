@@ -2,7 +2,7 @@ from flask import Flask
 from dotenv import load_dotenv
 from flask_restful import Api, Resource
 from controllers.AuthController import ChangePassword, VerifyLogin
-from controllers.RoleController import GetRole, InsertRole, UpdateRole
+from controllers.RoleController import GetRole, InsertRole, UpdateRole, DeleteRole
 from controllers.UserController import GetUser, InsertUser, UpdateUser, DeleteUser
 import utility
 import os
@@ -35,6 +35,7 @@ api.add_resource(VerifyLogin, '/verifyLogin')
 api.add_resource(GetRole, '/getRole')
 api.add_resource(InsertRole, '/insertRole')
 api.add_resource(UpdateRole, '/updateRole/<int:sysrole_kode>')
+api.add_resource(DeleteRole, '/deleteRole/<int:sysrole_kode>')
 
 if __name__ == '__main__':
     app.run()

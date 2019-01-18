@@ -57,3 +57,19 @@ class UpdateRole(Resource):
             return utility.give_response("01", str(e))
         finally:
             cursor.close()
+
+
+# noinspection SqlResolve
+class DeleteRole(Resource):
+    @staticmethod
+    def delete(sysrole_kode):
+        global cursor
+        try:
+            cursor = connection.cursor()
+            cursor.execute("""DELETE FROM sys_role WHERE sysrole_kode=%s""", sysrole_kode)
+            connection.commit()
+            return utility.give_response("00", "DELETE ROLE SUKSES")
+        except Exception as e:
+            return utility.give_response("01", str(e))
+        finally:
+            cursor.close()
