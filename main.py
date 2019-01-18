@@ -2,7 +2,7 @@ from flask import Flask
 from dotenv import load_dotenv
 from flask_restful import Api, Resource
 from controllers.AuthController import ChangePassword, VerifyLogin
-from controllers.ModulController import GetModul, InsertModul, UpdateModul
+from controllers.ModulController import GetModul, InsertModul, UpdateModul, DeleteModul
 from controllers.RoleController import GetRole, InsertRole, UpdateRole, DeleteRole
 from controllers.UserController import GetUser, InsertUser, UpdateUser, DeleteUser
 import utility
@@ -40,6 +40,7 @@ api.add_resource(DeleteRole, '/deleteRole/<int:sysrole_kode>')
 api.add_resource(GetModul, '/getModul')
 api.add_resource(InsertModul, '/insertModul')
 api.add_resource(UpdateModul, '/updateModul/<string:sysmodul_kode>')
+api.add_resource(DeleteModul, '/deleteModul/<string:sysmodul_kode>')
 
 
 if __name__ == '__main__':
