@@ -23,4 +23,27 @@ class GetModul(Resource):
             cursor.close()
 
 
-
+# noinspection SqlResolve
+class InsertModul(Resource):
+    @staticmethod
+    def post():
+        global cursor
+        try:
+            sysmodul_kode = request.form["sysmodul_kode"]
+            sysmodul_nama = request.form["sysmodul_nama"]
+            sysmodul_url = request.form["sysmodul_url"]
+            sysmodul_icon = request.form["sysmodul_icon"]
+            sysmodul_parent = request.form["sysmodul_parent"]
+            if not sysmodul_parent:
+                sysmodul_parent = None
+            sysmodul_no_urut = request.form["sysmodul_no_urut"]
+            cursor = connection.cursor()
+            cursor.execute(
+                """INSERT INTO sys_modul (sysmodul_kode,sysmodul_nama,sysmodul_url,sysmodul_icon,sysmodul_parent,sysmodul_no_urut) VALUES (%s,%s,%s,%s,%s,%s)""",
+                (sysmodul_kode, sysmodul_nama, sysmodul_url, sysmodul_icon, sysmodul_parent, sysmodul_no_urut))
+            connection.commit()
+            return utility.give_response("00", "INSERT MODUL SUKSES")
+        except Exception as e:
+            return utility.give_response("01", str(e))
+        finally:
+            cursor.close()
