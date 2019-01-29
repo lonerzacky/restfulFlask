@@ -1,5 +1,6 @@
 from flask import Flask
 from dotenv import load_dotenv
+from flask_cors import CORS
 from flask_restful import Api, Resource
 from controllers.AuthController import ChangePassword, VerifyLogin
 from controllers.ModulController import GetModul, InsertModul, UpdateModul, DeleteModul
@@ -14,6 +15,7 @@ load_dotenv()
 app = Flask(__name__)
 api = Api(app)
 app.config['JSON_SORT_KEYS'] = False
+CORS(app)
 
 
 class GetVersion(Resource):
