@@ -1,3 +1,4 @@
+from os.path import join, dirname
 from flask import Flask
 from dotenv import load_dotenv
 from flask_cors import CORS
@@ -10,6 +11,7 @@ from controllers.RmodulController import GetRmodul, InsertRModul, DeleteRModul
 import utility
 import os
 
+dotenv_path = join(dirname(__file__), '.env')
 load_dotenv()
 
 app = Flask(__name__)
