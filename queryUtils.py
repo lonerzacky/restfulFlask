@@ -1,6 +1,5 @@
 import datetime
 import json
-from typing import Dict, List, Any
 from flask import request
 from connection import connection
 
@@ -20,8 +19,8 @@ def get_info_user(sysuser_nama, sysuser_passw):
     sysuser_nama,sysuser_namalengkap,sysuser_email FROM sys_user 
     INNER JOIN sys_role ON sys_user.sysrole_kode = sys_role.sysrole_kode WHERE sysuser_nama=%s AND sysuser_passw=%s""",
                    (sysuser_nama, sysuser_passw))
-    result: List[Dict[Any, Any]] = [dict((cursor.description[i][0], value)
-                                         for i, value in enumerate(row)) for row in cursor.fetchall()]
+    result = [dict((cursor.description[i][0], value)
+                   for i, value in enumerate(row)) for row in cursor.fetchall()]
     return result
 
 
