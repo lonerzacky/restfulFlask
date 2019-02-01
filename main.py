@@ -51,4 +51,4 @@ api.add_resource(InsertRModul, '/insertRModul')
 api.add_resource(DeleteRModul, '/deleteRModul')
 
 if __name__ == '__main__':
-    app.run(host=os.getenv('APP_HOST'),port=os.getenv('APP_PORT'))
+    app.run(host=os.getenv('APP_HOST'), port=os.getenv('APP_PORT'))
