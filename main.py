@@ -12,7 +12,7 @@ import utility
 import os
 
 dotenv_path = join(dirname(__file__), '.env')
-load_dotenv()
+load_dotenv(dotenv_path)
 
 app = Flask(__name__)
 api = Api(app)
