@@ -1,6 +1,7 @@
 FROM python:2.7
-ADD . /restfulFlask
-WORKDIR /restfulFlask
-EXPOSE 4000
+
+COPY . /app
+WORKDIR /app
 RUN pip install -r requirements.txt
-ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["python"]
+CMD ["main.py"]
