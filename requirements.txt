@@ -1,3 +1,4 @@
+flask
 dotenv==0.0.5
 python-dotenv==0.10.1
 Flask-Cors==3.0.7
