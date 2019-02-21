@@ -9,7 +9,7 @@ rm-container:
 rm-image:
 	docker rmi flask-app:latest
 clean:
-	docker stop myFlask && docker rm myFlask && docker rmi flask-sample:latest
+	docker stop myFlask && docker rm myFlask && docker rmi flask-app:latest
 run:
 	docker run -p 4000:4000 -v ${LOCAL_DESTINATION}.env:/app/.env --name myFlask flask-app
 env-init:
