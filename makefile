@@ -2,6 +2,10 @@ LOCAL_DESTINATION=E:\Development\python\restfulFlask\
 
 build:
 	docker build -t flask-app:latest .
+start:
+	docker start myFlask
+restart:
+	docker restart myFlask
 stop:
 	docker stop myFlask
 rm-container:
